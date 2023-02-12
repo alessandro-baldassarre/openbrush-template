@@ -20,23 +20,23 @@ pub mod contract_name {
 
     #[ink(storage)]
     #[derive(Default, Storage)]
-    pub struct ContractName {
+    pub struct Contract {
         #[storage_field]
         pack_name: pack_name::Data,
     }
 
-    impl ContractName {
+    impl Contract {
         #[ink(constructor)]
         pub fn try_new() -> Result<Self, ContractError> {
             Ok(Self::default())
         }
     }
 
-    impl PackName for ContractName {}
+    impl PackName for Contract {}
 
-    impl Internal for ContractName {
+    impl Internal for Contract {
         fn _emit_flip_event(&self, value: bool) {
-            EmitEvent::<ContractName>::emit_event(self.env(), ValueFlipped { value })
+            EmitEvent::<Contract>::emit_event(self.env(), ValueFlipped { value })
         }
     }
 
@@ -46,7 +46,7 @@ pub mod contract_name {
 
         use super::*;
 
-        type Event = <ContractName as ::ink::reflect::ContractEventBase>::Type;
+        type Event = <Contract as ::ink::reflect::ContractEventBase>::Type;
 
         fn decode_events(emittend_events: Vec<EmittedEvent>) -> Vec<Event> {
             emittend_events
@@ -59,20 +59,20 @@ pub mod contract_name {
 
         #[ink::test]
         fn construction_work() {
-            let contract = ContractName::try_new().unwrap();
+            let contract = Contract::try_new().unwrap();
             assert_eq!(contract.pack_name.value, false);
         }
 
         #[ink::test]
         fn flip_work() {
-            let contract = ContractName::try_new().unwrap();
+            let contract = Contract::try_new().unwrap();
             let result = contract.flip().unwrap();
             assert_eq!(result, true);
         }
 
         #[ink::test]
         fn emit_event_work() {
-            let contract = ContractName::try_new().unwrap();
+            let contract = Contract::try_new().unwrap();
             let result = contract.flip().unwrap();
             assert_eq!(result, true);
             let emitted_events: Vec<EmittedEvent> = ink::env::test::recorded_events().collect();

@@ -34,13 +34,19 @@ Check for unused dependencies:
 cargo make udeps
 ```
 
-Compile all contracts using [cargo-contract]:
+Compile all contracts using [cargo-contract] in debug mode:
 
 ```sh
-cargo make build
+cargo make debug
 ```
 
-Once optimized, verify the wasm binaries are ready to be uploaded to the blockchain:
+Compile all contracts using [cargo-contract] in release mode:
+
+```sh
+cargo make release
+```
+
+Once builded, verify the wasm binaries are ready to be uploaded to the blockchain using [cargo-contract]:
 
 ```sh
 cargo make check

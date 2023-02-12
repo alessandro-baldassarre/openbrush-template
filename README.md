@@ -1,6 +1,6 @@
 # OpenBrush Template
 
-Template for multi-contract [ink-openbrush](https://github.com/727-Ventures/openbrush-contracts) projects
+Template for multi-contracts [ink-openbrush](https://github.com/727-Ventures/openbrush-contracts) projects
 
 ## How to Use
 

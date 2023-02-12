@@ -26,6 +26,6 @@ tarpaulin-report.*
 
 # integration tests
 contracts/**/Cargo.lock
-traits/**/Cargo.lock
+packages/**/Cargo.lock
 debug/**/Cargo.lock
 ci/**/Cargo.lock

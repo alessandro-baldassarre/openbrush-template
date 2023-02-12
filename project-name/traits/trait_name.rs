@@ -1,12 +1,12 @@
-use crate::error::PackNameError;
+use super::TraitNameError;
 
 #[openbrush::wrapper]
-pub type PackNameRef = dyn PackName;
+pub type TraitNameRef = dyn TraitName;
 
 #[openbrush::trait_definition]
-pub trait PackName {
+pub trait TraitName {
     #[ink(message)]
-    fn flip(&self) -> Result<bool, PackNameError>;
+    fn flip(&self) -> Result<bool, TraitNameError>;
 }
 
 pub trait Internal {

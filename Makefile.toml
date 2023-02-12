@@ -25,7 +25,7 @@ contracts=(
 )
 
 for contract in ${contracts[@]}; do
-  cd contracts/$contract &&
+  cd project-name/contracts/$contract &&
   cargo contract build --release --manifest-path ./Cargo.toml
 done
 """
@@ -38,7 +38,7 @@ contracts=(
 )
 
 for contract in ${contracts[@]}; do
-  cd contracts/$contract &&
+  cd project-name/contracts/$contract &&
   cargo contract build --manifest-path ./Cargo.toml
 done
 """
@@ -62,7 +62,7 @@ args = [
 script = """
 crates=(
   contract-name
-  pack-name
+  project-name
 )
 
 for crate in ${crates[@]}; do

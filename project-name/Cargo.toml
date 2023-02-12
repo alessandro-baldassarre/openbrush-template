@@ -1,35 +1,33 @@
 [package]
-name          = "contract-name"
+name          = "project-name"
 version       = "0.1.0"
 authors       = ["Alessandro Baldassarre <alessandro.baldassarre.dev@gmail.com>"]
 edition       = "2021"
 license       = "UNLICENSED"
-repository    = "https://github.com/alessandro-baldassarre/openbrush-template/contract-name"
-documentation = "https://github.com/alessandro-baldassarre/openbrush-template/contract-name#readme"
+repository    = "https://github.com/alessandro-baldassarre/openbrush-template/project-name"
+documentation = "https://github.com/alessandro-baldassarre/openbrush-template/project-name#readme"
 keywords      = ["blockchain", "polkadot", "ink"]
 
 [lib]
-crate-type = ["cdylib"]
+name = "project_name"
+path = "lib.rs"
+crate-type = ["rlib"]
 
 [dependencies]
 ink        = { version = "4.0.0-rc", default-features = false }
 openbrush  = { git = "https://github.com/727-Ventures/openbrush-contracts", default-features = false }
 scale      = { package = "parity-scale-codec", version = "3", default-features = false, features = ["derive"] }
 scale-info = { version = "2.3", default-features = false, features = ["derive"], optional = true }
-pack-name  = { path = "../../packages/pack-name", default-features = false }
-thiserror-no-std = { version = "2.0.2" }
-
-[dev-dependencies]
-ink_e2e = { version = "4.0.0-rc" } 
+thiserror-no-std = { version = "2.0.2"}
 
 [features]
 default = ["std"]
 std = [
     "ink/std",
+    "openbrush/std",
     "scale/std",
     "scale-info/std",
-    "pack-name/std"
 ]
-ink-as-dependency = []
 
-e2e-tests = []
+[profile.dev]
+codegen-units = 16

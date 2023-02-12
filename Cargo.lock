@@ -509,8 +509,8 @@ dependencies = [
  "ink",
  "ink_e2e",
  "openbrush",
- "pack-name",
  "parity-scale-codec",
+ "project-name",
  "scale-info",
  "thiserror-no-std",
 ]
@@ -2293,17 +2293,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "9b7820b9daea5457c9f21c69448905d723fbd21136ccf521748f23fd49e723ee"
 
 [[package]]
-name = "pack-name"
-version = "0.1.0"
-dependencies = [
- "ink",
- "openbrush",
- "parity-scale-codec",
- "scale-info",
- "thiserror-no-std",
-]
-
-[[package]]
 name = "pallet-assets-chain-extension"
 version = "0.1.1"
 source = "git+https://github.com/727-ventures/pallet-assets-chain-extension?branch=ink-4-beta#c829a88a77ae9bef5637818dadd3dd0af17a0a3c"
@@ -2521,6 +2510,17 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "5d727cae5b39d21da60fa540906919ad737832fe0b1c165da3a34d6548c849d6"
 dependencies = [
  "unicode-ident",
+]
+
+[[package]]
+name = "project-name"
+version = "0.1.0"
+dependencies = [
+ "ink",
+ "openbrush",
+ "parity-scale-codec",
+ "scale-info",
+ "thiserror-no-std",
 ]
 
 [[package]]

@@ -5,10 +5,7 @@ pub mod contract_name {
         Env,
     };
     use openbrush::traits::Storage;
-    use pack_name::{
-        impls::*,
-        traits::Internal,
-    };
+    use project_name::impls::trait_name::*;
 
     use crate::error::ContractError;
 
@@ -22,7 +19,7 @@ pub mod contract_name {
     #[derive(Default, Storage)]
     pub struct Contract {
         #[storage_field]
-        pack_name: pack_name::Data,
+        trait_name: trait_name::Data,
     }
 
     impl Contract {
@@ -32,7 +29,7 @@ pub mod contract_name {
         }
     }
 
-    impl PackName for Contract {}
+    impl TraitName for Contract {}
 
     impl Internal for Contract {
         fn _emit_flip_event(&self, value: bool) {
@@ -60,7 +57,7 @@ pub mod contract_name {
         #[ink::test]
         fn construction_work() {
             let contract = Contract::try_new().unwrap();
-            assert_eq!(contract.pack_name.value, false);
+            assert_eq!(contract.trait_name.value, false);
         }
 
         #[ink::test]

@@ -1,0 +1,12 @@
+{
+    "lspconfig": {
+        "rust_analyzer": {
+
+            "rust-analyzer.diagnostics.disabled": ["macro-error","unresolved-macro-call","unresolved-import","unresolved-proc-macro"],
+            "rust-analyzer.experimental.procAttrMacros": false,
+            "rust-analyzer.procMacro.enable": false,
+            // "rust-analyzer.cargo.features" : ["e2e-tests"]
+            
+        }
+    }
+}

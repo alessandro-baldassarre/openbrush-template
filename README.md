@@ -22,6 +22,12 @@ Run tests:
 cargo make test
 ```
 
+Run e2e-tests:
+
+```sh
+cargo make test-e2e
+```
+
 Run linter (clippy):
 
 ```sh

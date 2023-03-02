@@ -10,8 +10,21 @@ command = "cargo"
 args = ["fmt", "--all"]
 
 [tasks.test]
-command = "cargo"
-args = ["test", "--locked"]
+script = """
+for contract in contracts/*; do
+  cd $contract &&
+  cargo test
+done
+"""
+
+# This task requires substrate-contract-node
+[tasks.test-e2e]
+script = """
+for contract in contracts/*; do
+  cd $contract &&
+  cargo test --features e2e-tests
+done
+"""
 
 [tasks.lint]
 command = "cargo"
@@ -20,12 +33,8 @@ args = ["clippy", "--tests", "--", "-D", "warnings"]
 # This task requires the `cargo-contract` package: https://crates.io/crates/cargo-contract
 [tasks.release]
 script = """
-contracts=(
-  contract-name
-)
-
-for contract in ${contracts[@]}; do
-  cd project-name/contracts/$contract &&
+for contract in contracts/*; do
+  cd $contract &&
   cargo contract build --release --manifest-path ./Cargo.toml
 done
 """
@@ -33,12 +42,8 @@ done
 # This task requires the `cargo-contract` package: https://crates.io/crates/cargo-contract
 [tasks.debug]
 script = """
-contracts=(
-  contract-name
-)
-
-for contract in ${contracts[@]}; do
-  cd project-name/contracts/$contract &&
+for contract in contracts/*; do
+  cd $contract &&
   cargo contract build --manifest-path ./Cargo.toml
 done
 """
@@ -51,11 +56,12 @@ args = ["udeps"]
 
 # This task requires the `cargo-contract` package: https://crates.io/crates/cargo-contract
 [tasks.check]
-command = "cargo"
-args = [
-  "contract",
-  "check",
-]
+script = """
+for contract in contracts/*; do
+  cd $contract &&
+  cargo contract check 
+done
+"""
 
 # Update the `crates` array in the script to reflect the content of your project
 [tasks.publish]

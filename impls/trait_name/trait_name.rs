@@ -11,11 +11,19 @@ pub use crate::{
 use openbrush::traits::Storage;
 
 impl<T: Storage<Data>> TraitName for T {
-    default fn flip(&self) -> Result<bool, TraitNameError> {
-        let result = !self.data::<Data>().value;
-        self._emit_flip_event(result);
-        Ok(result)
+    default fn get_value(&self) -> Result<bool, TraitNameError> {
+        Ok(self.data().value)
     }
+    default fn flip(&mut self) -> Result<(), TraitNameError> {
+        self.data().value = !self.data().value;
+        let result = self.data().value;
+        self._emit_flip_event(result);
+        Ok(())
+    }
+}
+
+pub trait Internal {
+    fn _emit_flip_event(&self, _value: bool) {}
 }
 
 impl<T: Storage<Data>> Internal for T {

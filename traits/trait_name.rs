@@ -6,9 +6,8 @@ pub type TraitNameRef = dyn TraitName;
 #[openbrush::trait_definition]
 pub trait TraitName {
     #[ink(message)]
-    fn flip(&self) -> Result<bool, TraitNameError>;
-}
+    fn get_value(&self) -> Result<bool, TraitNameError>;
 
-pub trait Internal {
-    fn _emit_flip_event(&self, _value: bool);
+    #[ink(message)]
+    fn flip(&mut self) -> Result<(), TraitNameError>;
 }

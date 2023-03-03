@@ -12,8 +12,7 @@ args = ["fmt", "--all"]
 [tasks.test]
 script = """
 for contract in contracts/*; do
-  cd $contract &&
-  cargo test
+  cargo test --manifest-path $contract/Cargo.toml
 done
 """
 
@@ -21,8 +20,7 @@ done
 [tasks.test-e2e]
 script = """
 for contract in contracts/*; do
-  cd $contract &&
-  cargo test --features e2e-tests
+     cargo test --manifest-path $contract/Cargo.toml --features e2e-tests
 done
 """
 
@@ -34,8 +32,7 @@ args = ["clippy", "--tests", "--", "-D", "warnings"]
 [tasks.release]
 script = """
 for contract in contracts/*; do
-  cd $contract &&
-  cargo contract build --release --manifest-path ./Cargo.toml
+  cargo contract build --release --manifest-path $contract/Cargo.toml
 done
 """
 
@@ -43,8 +40,7 @@ done
 [tasks.debug]
 script = """
 for contract in contracts/*; do
-  cd $contract &&
-  cargo contract build --manifest-path ./Cargo.toml
+  cargo contract build --manifest-path $contract/Cargo.toml
 done
 """
 
@@ -58,8 +54,7 @@ args = ["udeps"]
 [tasks.check]
 script = """
 for contract in contracts/*; do
-  cd $contract &&
-  cargo contract check 
+  cargo contract check --manifest-path $contract/Cargo.toml
 done
 """
 
